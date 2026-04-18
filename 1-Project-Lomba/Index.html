@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SportHub 🇮🇩 Lomba Kemerdekaan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-icon">⚽</span>
+        <span class="logo-text">Sport<span class="logo-accent">Hub</span></span>
+      </div>
+      <div class="header-sub">🇮🇩 Lomba Kemerdekaan</div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="tab-nav">
+    <button class="tab-btn active" data-tab="input">
+      <span class="tab-icon">👥</span> Tim
+    </button>
+    <button class="tab-btn" data-tab="bracket">
+      <span class="tab-icon">🏆</span> Bagan
+    </button>
+    <button class="tab-btn" data-tab="score">
+      <span class="tab-icon">📊</span> Skor
+    </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="app-main">
+
+    <!-- TAB: INPUT TIM -->
+    <section id="tab-input" class="tab-content active">
+      <div class="section-header">
+        <h2>Daftar Tim</h2>
+        <span class="badge" id="team-count-badge">0 Tim</span>
+      </div>
+
+      <div class="sport-selector">
+        <label class="sport-label">Jenis Olahraga:</label>
+        <div class="sport-buttons">
+          <button class="sport-btn active" data-sport="Futsal">⚽ Futsal</button>
+          <button class="sport-btn" data-sport="Basket">🏀 Basket</button>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <input type="text" id="team-name-input" placeholder="Nama tim (contoh: RT 03 Garuda)" maxlength="30" />
+        <button class="btn-add" id="btn-add-team">+ Tambah</button>
+      </div>
+
+      <ul class="team-list" id="team-list">
+        <li class="empty-state">Belum ada tim. Tambahkan tim di atas!</li>
+      </ul>
+
+      <div class="action-bar">
+        <button class="btn-primary" id="btn-generate">
+          🎯 Generate Bagan
+        </button>
+        <button class="btn-danger" id="btn-reset">
+          🗑️ Reset Semua
+        </button>
+      </div>
+    </section>
+
+    <!-- TAB: BAGAN -->
+    <section id="tab-bracket" class="tab-content">
+      <div class="section-header">
+        <h2>Bagan Turnamen</h2>
+        <span class="badge" id="sport-badge">—</span>
+      </div>
+      <div id="bracket-container">
+        <div class="empty-state">Belum ada bagan. Generate dari tab Tim!</div>
+      </div>
+    </section>
+
+    <!-- TAB: SCOREBOARD -->
+    <section id="tab-score" class="tab-content">
+      <div class="section-header">
+        <h2>Scoreboard</h2>
+      </div>
+      <div id="score-match-list">
+        <div class="empty-state">Belum ada pertandingan. Generate bagan dulu!</div>
+      </div>
+
+      <!-- Score Modal -->
+      <div class="modal-overlay" id="score-modal">
+        <div class="modal-card">
+          <div class="modal-sport-label" id="modal-sport-label">⚽ Futsal</div>
+          <h3 class="modal-title" id="modal-match-title">—</h3>
+          <div class="modal-period">
+            <label>Babak:</label>
+            <div class="period-controls">
+              <button class="period-btn" id="btn-period-dec">−</button>
+              <span id="period-display">1</span>
+              <button class="period-btn" id="btn-period-inc">+</button>
+            </div>
+          </div>
+          <div class="scoreboard-live">
+            <div class="score-side">
+              <div class="team-name-score" id="modal-team-a">—</div>
+              <div class="score-controls">
+                <button class="score-btn dec" data-team="a">−</button>
+                <span class="score-display" id="score-a">0</span>
+                <button class="score-btn inc" data-team="a">+</button>
+              </div>
+            </div>
+            <div class="score-vs">VS</div>
+            <div class="score-side">
+              <div class="team-name-score" id="modal-team-b">—</div>
+              <div class="score-controls">
+                <button class="score-btn dec" data-team="b">−</button>
+                <span class="score-display" id="score-b">0</span>
+                <button class="score-btn inc" data-team="b">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <button class="btn-primary" id="btn-set-winner">✅ Tentukan Pemenang</button>
+            <button class="btn-secondary" id="btn-reset-score">🔄 Reset Skor</button>
+            <button class="btn-secondary" id="btn-close-modal">✕ Tutup</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
